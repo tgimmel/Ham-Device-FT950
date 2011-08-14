@@ -30,9 +30,7 @@ The included test program needs the perl Module "Switch.pm" installed.  Both can
 
 COPYRIGHT AND LICENCE
 
-Put the correct copyright and licence information here.
-
-Copyright (C) 2008-2010 by Tim Gimmel
+Copyright (C) 2008-2011 by Tim Gimmel
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.8.8 or,
