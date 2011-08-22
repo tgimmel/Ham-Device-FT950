@@ -3,47 +3,62 @@ package Ham::Device::FT950;
 use 5.008008;
 use strict;
 use warnings;
+use Moose;
 require Exporter;
 use Device::SerialPort qw(:PARAM :STAT 0.07);
 use Carp;
 $|=1;
 
-our @ISA = qw();
-our @EXPORT = qw();
-
-our @EXPORT_OK = qw();
+#our @ISA = qw();
+#our @EXPORT = qw();
+#
+#our @EXPORT_OK = qw();
 
 our $VERSION = '0.29.4 ';
 #Version .23 starts OO work.
+#Version .29.5 starts OO with Moose.
 
 my ($result, %rig_mode, %inv_rig_mode, %band, %inv_band);
 my $port;
 
 # Going to talk to a Yaesu FT-950
 # Constructor to start communicating
-sub new {
-    my $invocant = shift;
-    my $class = ref($invocant) || $invocant;
-    my $self = {
-                portname    => "/dev/ttyS0",  #Defaults, can be overidden
-                databits    => 8,             #during construction by user.
-                baudrate    => 4800,
-                parity      => "none",
-                stopbits    => 1,
-                handshake   => "rts",
-                alias       => "FT-950",
-                user_msg    => "OFF",
-                lockfile    => 1,
-                #configFile  => "FT950.ini",
-                read_char_time  => 0,
-                read_const_time => 20,
-                @_
-            };
-    bless($self, $class);
-    $self->_init;
-    $self->_openSerial();
-    return $self;
-}
+
+has 'portname' ( is => 'rw', isa => 'Str', default => '/dev/ttyS0' );
+has 'databits' ( is => 'rw', isa => 'Int', default => 8 );
+has 'baudrate' ( is => 'rw', isa => 'Int', default => 4800 );
+has 'parity'   ( is => 'rw', isa => 'Str', default => 'none' );
+has 'stopbits' ( is => 'rw', isa => 'Int', default => 1 );
+has 'handshake'( is => 'rw', isa => 'Str', defalut => 'rts' );
+has 'alias'    ( is => 'rw', isa => 'Str', default => 'FT-950' );
+has 'user_msg' ( is => 'rw', isa => 'Str', default => 'OFF' );
+has 'lockfile' ( is => 'rw', isa => 'Int', default => 1 );
+has 'read_char_time' (is => 'ro', isa => 'Int', default => 0 );
+has 'read_const_time'(is => 'ro', isa => 'Int', default => 20 );
+
+#sub new {
+#    my $invocant = shift;
+#    my $class = ref($invocant) || $invocant;
+#    my $self = {
+#                portname    => "/dev/ttyS0",  #Defaults, can be overidden
+#                databits    => 8,             #during construction by user.
+#                baudrate    => 4800,
+#                parity      => "none",
+#                stopbits    => 1,
+#                handshake   => "rts",
+#                alias       => "FT-950",
+#                user_msg    => "OFF",
+#                lockfile    => 1,
+#                #configFile  => "FT950.ini",
+#                read_char_time  => 0,
+#                read_const_time => 20,
+#                @_
+#            };
+#    bless($self, $class);
+#    $self->_init;
+#    $self->_openSerial();
+#    return $self;
+#}
 
 
 #Accessor Methods
