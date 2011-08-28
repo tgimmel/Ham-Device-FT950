@@ -24,17 +24,17 @@ my $port;
 # Going to talk to a Yaesu FT-950
 # Constructor to start communicating
 
-has 'portname' ( is => 'rw', isa => 'Str', default => '/dev/ttyS0' );
-has 'databits' ( is => 'rw', isa => 'Int', default => 8 );
-has 'baudrate' ( is => 'rw', isa => 'Int', default => 4800 );
-has 'parity'   ( is => 'rw', isa => 'Str', default => 'none' );
-has 'stopbits' ( is => 'rw', isa => 'Int', default => 1 );
-has 'handshake'( is => 'rw', isa => 'Str', defalut => 'rts' );
-has 'alias'    ( is => 'rw', isa => 'Str', default => 'FT-950' );
-has 'user_msg' ( is => 'rw', isa => 'Str', default => 'OFF' );
-has 'lockfile' ( is => 'rw', isa => 'Int', default => 1 );
-has 'read_char_time' (is => 'ro', isa => 'Int', default => 0 );
-has 'read_const_time'(is => 'ro', isa => 'Int', default => 20 );
+has 'portname' => ( is => 'rw', isa => 'Str', default => '/dev/ttyS0' );
+has 'databits' => ( is => 'rw', isa => 'Int', default => 8 );
+has 'baudrate' => ( is => 'rw', isa => 'Int', default => 4800 );
+has 'parity'   => ( is => 'rw', isa => 'Str', default => 'none' );
+has 'stopbits' => ( is => 'rw', isa => 'Int', default => 1 );
+has 'handshake'=> ( is => 'rw', isa => 'Str', defalut => 'rts' );
+has 'alias'    => ( is => 'rw', isa => 'Str', default => 'FT-950' );
+has 'user_msg' => ( is => 'rw', isa => 'Str', default => 'OFF' );
+has 'lockfile' => ( is => 'rw', isa => 'Int', default => 1 );
+has 'read_char_time' => (is => 'ro', isa => 'Int', default => 0 );
+has 'read_const_time' => (is => 'ro', isa => 'Int', default => 20 );
 
 #sub new {
 #    my $invocant = shift;
